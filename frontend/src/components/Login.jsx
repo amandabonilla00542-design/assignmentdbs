@@ -15,7 +15,7 @@ export default function Login() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const check = await fetch('http://localhost:3000/api/IB/Welcome', {
+        const check = await fetch('https://assignmentdbs-ylfk.onrender.com/api/IB/Welcome', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -43,7 +43,7 @@ export default function Login() {
     setError('')
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:3000/api/postinglogin', {
+      const response = await fetch('https://assignmentdbs-ylfk.onrender.com/api/postinglogin', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
