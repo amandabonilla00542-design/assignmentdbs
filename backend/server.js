@@ -51,6 +51,7 @@ app.get('/api/logout', (req, res) => {
 // Node.js backend
 app.post('/verify-turnstile', async (req, res) => {
   const { token } = req.body;
+  console.log(token);
   
   const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
