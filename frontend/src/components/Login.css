@@ -1,0 +1,276 @@
+/* ============================================
+   DBS digibank Login — matches both screenshots
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #e8002d;
+  --red-hover: #c0001e;
+  --border: #d8d8d8;
+  --text: #1a1a1a;
+  --gray: #666;
+  --light-gray: #999;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) }
+  20%       { transform: translateX(-7px) }
+  40%       { transform: translateX(7px) }
+  60%       { transform: translateX(-4px) }
+  80%       { transform: translateX(4px) }
+}
+
+/* ── Root: side-by-side on desktop ── */
+.dbs-root {
+  min-height: 100vh;
+  display: flex;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+}
+
+/* ── Left: background image ── 
+*/
+.dbs-bg {
+  flex: 1;
+  min-height: 100vh;
+  background-image: url('/images/NG-Noon.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #f3f3f3;      
+}
+
+/* ── Right: white panel ── */
+.dbs-panel {
+  width: 460px;
+  flex-shrink: 0;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Logo */
+.dbs-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.dbs-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+/* Alert box */
+.dbs-alert {
+  display: flex;
+  gap: 12px;
+  border: 1px solid #e8e0c0;
+  border-left: 4px solid #f0a500;
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  background: #fff;
+}
+
+.dbs-alert-icon {
+  font-size: 20px;
+  color: #c49a00;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.dbs-alert-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.dbs-alert-sub {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+.dbs-underline-link {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* Form */
+.dbs-form { display: flex; flex-direction: column; }
+.dbs-form.shake { animation: shake 0.5s ease; }
+
+.dbs-field { margin-bottom: 14px; }
+
+.dbs-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 13px 14px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.dbs-input::placeholder { color: #bbb; font-size: 14px; }
+
+.dbs-input:focus {
+  border-color: #888;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.07);
+}
+
+/* Error */
+.dbs-error {
+  font-size: 13px;
+  color: #cc0000;
+  padding: 8px 12px;
+  background: #fff5f5;
+  border: 1px solid #ffcdd2;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Log in button */
+.dbs-login-btn {
+  align-self: flex-start;
+  padding: 12px 32px;
+  background: var(--red);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  letter-spacing: 0.2px;
+}
+
+.dbs-login-btn:hover:not(:disabled) { background: var(--red-hover); }
+.dbs-login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.dbs-login-btn.success { background: #1a7a3a; }
+
+/* Forgot / Register */
+.dbs-bottom-links {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dbs-forgot {
+  font-size: 14px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+.dbs-red-link {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.dbs-red-link:hover { text-decoration: underline; }
+
+.dbs-register {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.dbs-register:hover { text-decoration: underline; }
+
+/* Help & Security row */
+.dbs-help-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.dbs-help-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+.dbs-help-item:hover { color: var(--red); }
+
+.dbs-help-icon {
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* Scheduled Maintenance */
+.dbs-maintenance {
+  margin-top: 18px;
+  padding-top: 4px;
+}
+
+.dbs-maint-link {
+  font-size: 14px;
+  color: var(--light-gray);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.dbs-maint-link:hover { color: var(--text); text-decoration: underline; }
+
+/* Panel footer links */
+.dbs-panel-footer {
+  margin-top: auto;
+  padding-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+}
+
+.dbs-panel-footer a,
+.dbs-panel-footer span {
+  font-size: 11.5px;
+  color: var(--light-gray);
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+}
+
+.dbs-panel-footer a:hover { color: var(--text); text-decoration: underline; }
+
+/* ── Responsive: mobile — hide bg, full width panel ── */
+@media (max-width: 900px) {
+  .dbs-bg { display: none; }
+  .dbs-panel {
+    width: 100%;
+    min-height: 100vh;
+    padding: 32px 20px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dbs-input { font-size: 15px; padding: 14px 14px; }
+  .dbs-login-btn { font-size: 15px; padding: 12px 32px; }
+  .dbs-wordmark { font-size: 32px; }
+  .dbs-logo-icon { width: 36px; height: 36px; }
+}

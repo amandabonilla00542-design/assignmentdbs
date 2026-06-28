@@ -1,0 +1,739 @@
+  
+
+*{ 
+   margin:0;
+   padding:0; 
+   box-sizing:border-box;
+}     
+
+  i:hover, button:hover{
+    opacity:0.7864;
+}       
+
+button{ 
+    font-family:'Poppins', sans-serif;
+} 
+
+
+
+ 
+
+  /* Full-screen div */
+  .fullscreen, .fullscreenb {
+     position:fixed;
+     width: 100vw;
+     height: 100vh;
+     display:none;
+     display: flex; 
+     top:0;
+     left:0;
+     right:0;
+     background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
+     z-index: 999; /* Ensures overlay appears on top */ 
+     bottom:0;
+     justify-content: center;
+     align-items: center;  
+ }
+
+
+   /* Image rotation styling */
+   .rotating-image {
+     width: 50px; /* Adjust as needed */
+     height: 50px; /* Adjust as needed */ 
+     background-color:white;
+     box-shadow:0px 4px 8px 0px rgba(0,0,0.2);
+     border-radius:50%;
+     animation: rotate3D 2s infinite linear;
+     transform-style: preserve-3d;
+ }  
+
+    .stopl{
+      bottom:20%;
+      background:linear-gradient(45deg, #006F98, #E4002B); 
+      border:none;
+      padding:4px 4px;
+      color:white;
+    }  
+
+
+    .sm{ 
+      margin-top:20px;
+      margin-bottom:10px;
+      background:linear-gradient(45deg, #006F98, #E4002B); 
+      border:none;
+      padding:4px 4px; 
+      width:100%;
+      color:white;
+    }
+
+ /* 3D rotation animation */
+ @keyframes rotate3D {
+     0% {
+         transform: rotateX(0deg) rotateY(0deg);
+     }
+     50% {
+         transform: rotateX(180deg) rotateY(180deg);
+     }
+     100% {
+         transform: rotateX(360deg) rotateY(360deg);
+     }
+ }
+
+
+
+
+
+
+
+ 
+
+/* General rules to remove borders from fieldset and input elements */
+input, fieldset {
+     border: none;
+     outline: none;
+ }
+ 
+ /* Specific to focused inputs if needed */
+ input:focus, fieldset:focus {
+     border: none;
+     outline: none;
+ }
+
+
+
+body{
+    background-color:white;  
+    font-family:'Poppins', sans-serif;
+}     
+
+
+.intro{
+  background:linear-gradient(45deg, #006F98, #E4002B);
+  padding-top:20px; 
+  padding-bottom:7px; 
+  padding-left:20px;
+  padding-right:20px; 
+} 
+
+.intro p{
+   color:white; 
+   font-size:21px;  
+   font-weight: 400;
+   font-style: normal;
+   font-family: "Sour Gummy", sans-serif; 
+}
+  
+
+.pfpenclose{ 
+    background:linear-gradient(45deg, #006F98, #E4002B);   
+     width:100%;
+     padding-left:20px;
+     padding-right:20px;   
+     margin-bottom:40px;
+     padding-bottom:35px;  
+     padding-top:20px;
+} 
+
+
+.pfpenclose .first{
+     display:flex;
+     justify-content:space-between;  
+     min-width:100px;
+}   
+
+
+.pfpenclose .first .a, .pfpenclose .first .b{
+    display:flex;  
+    width:100%;
+}    
+
+.pfpenclose .first .a i{
+     margin-top:10px;
+}
+
+.pfpenclose .first .a i, .pfpenclose .first .b i{
+     color:white;   
+     margin-right:10px;
+}   
+
+
+.pfpenclose .first .a i{
+   font-size:18px;
+}
+ 
+
+.pfpenclose .first .b button{
+    color:white; 
+    border:1px solid white; 
+    background:none;
+    font-family:'Poppins', sans-serif;
+    border-radius:30px;
+    padding:5px; 
+    width:100%; 
+}
+
+ 
+
+.pfpenclose .b{
+    display:flex;
+    justify-content:space-between;   
+    margin-bottom:20px;
+    width:20%; 
+}  
+
+.qtn{
+      padding-left:10px; 
+      padding-right:10px;
+      padding-top:8px;
+      border:1px solid white;
+      border-radius:100%;  
+      font-size:14px;
+}
+
+
+.second{
+    margin-top:5px;
+} 
+
+.second #mybalance{
+     color:white;
+     font-size:19px; 
+     font-family:'Poppins', sans-serif; 
+     display:none;
+     margin-bottom:15px;
+}    
+
+  #sbal{
+      font-size:20px; 
+      color:white; 
+      display:block;
+  }
+
+.second #mybalance span{
+    color:white;
+    font-size:14px; 
+    font-weight:bold;
+    font-family:'Poppins', sans-serif;
+} 
+
+.second .welcm{
+     color:white; 
+     font-size:20px; 
+     font-family:'Poppins', sans-serif;
+     font-weight:bold; 
+     margin-top:13px;
+} 
+
+.second .welcm span{
+     color:lightgrey;
+} 
+
+.second .wm{
+    color:white; 
+    font-size:15px; 
+    font-family:'Poppins', sans-serif; 
+    margin-top:10px;
+}   
+
+  
+.quick{
+     margin-top:20px; 
+     margin-bottom:20px; 
+     margin-left:20px;
+     margin-right:20px;
+     display:flex;
+     min-width:100px;   
+}
+  
+
+.quick i{
+     margin-left:7px; 
+     color:#006F98;
+     margin-top:5px;
+}  
+
+.quick p{
+     color:#212121;   
+     font-weight:bold;
+     font-size:15.5px; 
+     font-family:'Poppins', sans-serif; 
+}  
+
+.overall{
+ min-width:100px;
+ margin-left:10px;
+ margin-right:20px;
+ margin-top:40px;
+ margin-bottom:30px;
+ display:flex; 
+ overflow:scroll;
+ justify-content:space-between;
+}   
+
+
+   /* Hide scrollbar but keep scrolling */
+.overall{
+    overflow: scroll; /* or overflow-x or overflow-y if you need to scroll in one direction */
+    scrollbar-width: none; /* For Firefox */
+  }
+  
+  .overall::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+  }
+
+.overall div{
+     width:400px;
+     display:block;  
+     padding-left:5px;  
+     padding-left:5px;
+     margin-left:15px;
+     margin-right:15px;  
+     text-align:center;
+}  
+
+.overall div p{  
+    color:#212121; 
+    font-size:12px; 
+    font-weight:300;
+    font-family:'Poppins', sans-serif;    
+    padding-top:6px; 
+}    
+
+.overall div i{
+     padding:7px 7px;
+     height:30px; 
+     font-size:20px;
+     border-radius:5px;
+     background:linear-gradient(45deg, #006F98, #E4002B);  
+     color:white;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+     background-color:white;
+}   
+
+
+.acch{
+     min-width:100px; 
+     display:flex;
+     justify-content:space-between; 
+     text-align:center;
+     margin-bottom:40px;
+     margin-top:15px;
+}
+ 
+
+.acch div{
+     padding-bottom:5px;
+     padding-top:5px;  
+     font-size:14.7px;
+     margin:5px 5px;
+     font-family:'Poppins', sans-serif;
+     width:100%;   
+}   
+
+.acch #acct{ 
+     border-bottom:3px solid #E4002B;
+     font-weight:bold;
+}   
+
+.acch #hist{  
+     color:lightgray; 
+     font-weight:bold;  
+}  
+
+#acct, #hist{
+     cursor:pointer;
+} 
+ 
+ 
+.acctandins, .transaction-container{
+    min-width:100px;
+    margin-left:20px;
+    margin-right:20px;   
+    display:grid;
+    margin-top:20px;
+    grid-gap:25px;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 3fr));
+    padding-bottom:20px; 
+} 
+
+.acctandins .deposits, .transaction{
+     width:100%;
+     background-color:white;  
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+     padding:20px 20px; 
+}  
+
+.acctandins .deposits .dfa{
+     display:flex;
+     width:100%;
+     justify-content:space-between;
+}  
+
+.acctandins .deposits .dfa .dep{
+     padding-left:5px;
+     border-left:3px solid #006F98;  
+     color:black;
+     font-size:14.6px;
+     font-family:'Poppins', sans-serif;
+} 
+
+.acctandins .deposits .dfa i{
+     color:grey;
+     font-size:20px;
+}  
+
+.acctandins .deposits .dfab{
+      text-align:right; 
+      font-family:'Poppins', sans-serif;
+      width:100%;
+      color:grey;
+      font-size:14.4px; 
+      margin-top:7px;
+}  
+
+.acctandins .deposits .dfac{
+    text-align:right; 
+    width:100%;
+    color:black; 
+    font-family:'Poppins', sans-serif;
+    margin-top:7px; 
+    font-weight:bold;
+    font-size:17px;
+} 
+
+.acctandins .deposits .dfac p span{
+    text-align:right; 
+    width:100%;
+    color:lightgray;
+    font-size:13px;
+} 
+ 
+ 
+ 
+
+  .transaction-header {
+    font-weight: bold;
+    font-size: 14px; 
+    color:#006F98;
+    font-family:'Poppins',sans-serif;
+    margin-bottom: 5px;
+  }
+
+  .transaction-details {
+    font-size: 14px;
+    font-family:'Poppins',sans-serif;
+  }
+
+  .transaction-footer {
+    text-align: right;
+    font-size: 17px;
+    font-family:'Poppins',sans-serif;
+    font-weight: bold;
+    color: black;
+  } 
+
+  .transaction-footer span {
+    color:lightgray;
+    font-size:13px; 
+  } 
+
+
+  .footer{
+     padding-top:50px; 
+     padding-bottom:15px; 
+     margin-top:40px;
+     display:flex;  
+     background-image:linear-gradient(rgba(0,0,0,0.40), rgba(0,0,0,0.30)), url('/images/sgpbg.jpeg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat; 
+     min-width:100px;
+     padding-left:20px;
+     padding-right:20px; 
+  }  
+
+  .footer .links{
+      display:grid;
+      grid-gap:5px;
+      width:100%;
+      grid-template-columns:repeat(auto-fit, minmax(200px, 3fr)); 
+  }    
+
+   .footer .links div{
+     width:100%;  
+     text-align:center; 
+   }
+
+  .footer .links p{
+     color:white;
+     font-family:'Poppins', sans-serif;
+     font-size:14px;
+  }  
+
+  .footer .links p:hover{
+     text-decoration:underline;
+  }  
+
+
+  .footer .icons{
+     display:flex; 
+     width:60%;  
+     justify-content:right; 
+     margin-top:70px;
+  }  
+
+  .footer .icons i{
+        background-color:lightgray;
+        color:black;
+        font-size:20px; 
+        border-radius:50px; 
+        padding:5px 5px;
+        height:30px; 
+        margin-right:7px;
+  } 
+
+  .fa.fa-twitter::before{
+    content:"𝕏"; 
+  }  
+  
+
+    
+  @media only screen and (max-width:750px){  
+
+     .header, .instruction{
+        display:none;
+     }  
+
+     .dlogo{
+        margin-top:50px;
+     } 
+
+    .footer{
+         display:block;
+    } 
+
+    .footer .links, .footer .icons{
+        width:100%;
+    }   
+
+    .footer .links{
+       display:grid;
+       grid-gap:15px;
+       width:100%;
+       grid-template-columns:repeat(auto-fit, minmax(150px, 3fr)); 
+   } 
+
+    .footer .icons{
+        display:flex;
+        justify-content:space-around;  
+    }
+
+}      
+
+
+
+     /* Pin container styling */
+     .pin-container {
+          position: fixed;
+          top: 10%; /* 10% margin from top */
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90%; /* Occupy 90% of the width */
+          height: 80%; /* Occupy 80% of the height */
+          background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          z-index: 999;
+          display: flex; 
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          animation: fadeIn 0.5s ease-out forwards, slideUp 0.5s ease-out forwards;
+        }
+    
+        /* Keyframe animation for sliding up */
+        @keyframes slideUp {
+          from {
+            transform: translateX(-50%) translateY(100%);
+          }
+          to {
+            transform: translateX(-50%) translateY(0);
+          }
+        }
+    
+        /* Keyframe animation for fade-in */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+    
+        /* Cancel icon styling */
+        .cancel-icon {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 24px;
+          color: #fff;
+          cursor: pointer;
+          transition: color 0.3s ease;
+        }
+    
+        .cancel-icon:hover {
+          color: #E4002B; /* Change to red when hovered */
+        }
+    
+        /* Pin block styling */
+        .pin-block {
+          display: inline-block;
+          margin: 0 10px;
+        }
+    
+        .pin-input {
+          width: 50px;
+          height: 50px;
+          text-align: center;
+          font-size: 30px;
+          color: white;
+          background-color: transparent;
+          border: 2px solid #fff;
+          border-radius: 8px;
+          outline: none;
+          transition: all 0.3s ease;
+        }
+    
+        .pin-input:focus {
+          border-color: #4caf50; /* Green focus border */
+          box-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
+        }
+    
+        .pin-input::placeholder {
+          color: #bbb;
+        }
+    
+        /* Ensuring the pin blocks are aligned horizontally */
+        .pin-container {
+          display: flex;
+          flex-direction: column; /* Column to center the block vertically */
+          justify-content: center;
+          align-items: center;
+        }
+    
+        .pin-blocks {
+          display: flex; /* This makes the blocks horizontal */
+          justify-content: center;
+        }
+     
+  
+
+
+         /* Modal container styling */
+    .modal-container {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 80%;
+     max-width: 600px;
+     background-color:rgba(0,0,0, 0.6);
+     padding: 30px;
+     border-radius: 12px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+     color: white;
+     opacity: 0;
+     animation: fadeIn 0.5s ease-out forwards;
+     z-index: 1000;
+   }
+
+   /* Keyframe animation for fade-in */
+   @keyframes fadeIn {
+     from {
+       opacity: 0;
+     }
+     to {
+       opacity: 1;
+     }
+   }
+
+   /* Modal header styling */
+   .modal-header {
+     font-size: 24px;
+     font-weight: bold;
+     margin-bottom: 20px;
+     color: #ff4d4d; /* Red color for attention */
+   }
+
+   /* Modal body styling */
+   .modal-body {
+     font-size: 16px;
+     margin-bottom: 20px;
+     line-height: 1.5;
+   }
+
+   .modal-body a {
+     color: #4caf50; /* Green color for links */
+     text-decoration: none;
+   }
+
+   .modal-body a:hover {
+     text-decoration: underline;
+   }
+
+   /* Button to close the modal */
+   .modal-close {
+     display: inline-block;
+     padding: 10px 20px;
+     background:linear-gradient(45deg, #006F98, #E4002B); 
+     color: white;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: background-color 0.3s ease;
+   }
+
+   .modal-close:hover {
+     background-color: #e60000; /* Darker red when hovering */
+   }
+
+   /* Background overlay */
+   .modal-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+     z-index: 999;
+     opacity: 0;
+     animation: overlayFadeIn 0.5s ease-out forwards;
+   }
+
+   @keyframes overlayFadeIn {
+     from {
+       opacity: 0;
+     }
+     to {
+       opacity: 1;
+     }
+   }
+
+        
+ 
+ 
+
+
+            
+
+
+        
+
+
+
+
+  
+
