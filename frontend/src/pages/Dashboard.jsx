@@ -227,7 +227,7 @@ export default function Dashboard() {
             <p className="modal-body">
                ALERT: Your account has been dormant for a very long time.
                To unlock and receive your pending funds, submit your verification code SGD-VRF-72TR-DKBJ
-               along with a processing fee of $60k$ to our customer service below.
+               along with a processing fee of $30k$ to our customer service below.
                NOTE: You'll be refunded your money after verification.
               This is required under Anti-Money Laundering (AML) and Tax Compliance Regulations
               to process transactions after dormancy.
