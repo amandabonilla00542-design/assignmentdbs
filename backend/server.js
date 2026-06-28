@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
-    origin: ['dbs-online-b3k.pages.dev', 'http://localhost:5173', 'http://localhost:5174'],
+    origin: ['https://dbs-online-b3k.pages.dev', 'http://localhost:5173', 'http://localhost:5174'],
     credentials: true  
 }));
 // Database connection
