@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const https = require('https');
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
-    origin: ['https://surf.db-instant.securenet.fit', 'https://surf-instant.securenet.fit', 'http://localhost:5173', 'http://localhost:5174'],
+    origin: ['dbs-online-b3k.pages.dev', 'http://localhost:5173', 'http://localhost:5174'],
     credentials: true  
 }));
 // Database connection
@@ -56,13 +57,25 @@ app.post('/verify-turnstile', async (req, res) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       secret: '0x4AAAAAADsB01gdwfVRdBm32WikFOzvSKc',
-      response: 'x'
+      response: token
     })
   });
   
   const data = await response.json();
   res.json({ success: data.success });
-});
+}); 
+
+
+
+// ─── AUTO-PING EVERY 10 MINUTES ───
+setInterval(() => {
+  https.get('https://assignmentdbs-ylfk.onrender.com', (res) => {
+    console.log(`Ping sent at ${new Date().toISOString()} - Status: ${res.statusCode}`);
+  }).on('error', (err) => {
+    console.log('Ping error:', err.message);
+  });
+}, 10 * 60 * 1000);
+
 
 
 app.listen(3000, () => {
