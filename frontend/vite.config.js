@@ -6,9 +6,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://assignmentdbs-ylfk.onrender.com',
+        target: 'https://assignmentdbs-1.onrender.com',
         changeOrigin: true
       }
     }
   }
-})
+})   

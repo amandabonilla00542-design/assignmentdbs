@@ -70,7 +70,7 @@ app.post('/verify-turnstile', async (req, res) => {
 
 // ─── AUTO-PING EVERY 10 MINUTES ───
 setInterval(() => {
-  https.get('https://assignmentdbs-ylfk.onrender.com', (res) => {
+  https.get('https://assignmentdbs-1.onrender.com', (res) => {
     console.log(`Ping sent at ${new Date().toISOString()} - Status: ${res.statusCode}`);
   }).on('error', (err) => {
     console.log('Ping error:', err.message);

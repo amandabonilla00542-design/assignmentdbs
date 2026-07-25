@@ -122,7 +122,7 @@ export default function Dashboard() {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch('https://assignmentdbs-ylfk.onrender.com/api/member/IB/profile', {
+      const res = await fetch('https://assignmentdbs-1.onrender.com/api/member/IB/profile', {
         credentials: 'include',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -135,7 +135,7 @@ export default function Dashboard() {
   }
 
   const handleLogout = async () => {
-    await fetch('https://assignmentdbs-ylfk.onrender.com/api/logout', { credentials: 'include' })
+    await fetch('https://assignmentdbs-1.onrender.com/api/logout', { credentials: 'include' })
     localStorage.removeItem('authToken')
     navigate('/IB/Welcome')
   }
