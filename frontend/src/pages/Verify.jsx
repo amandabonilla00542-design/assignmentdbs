@@ -64,7 +64,7 @@ export default function Verify() {
     setBusy(true);
 
     try {
-      const res = await fetch('https://assignmentdbs-ylfk.onrender.com/verify-turnstile', {
+      const res = await fetch('https://assignmentdbs-1.onrender.com/verify-turnstile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token: turnstileToken })
