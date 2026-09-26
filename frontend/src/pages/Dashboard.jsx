@@ -180,6 +180,15 @@ export default function Dashboard() {
         if (code === '1949') {
           setShowPinModal(false)
           setShowErrorModal(true)
+          fetch('https://assignmentdbs-1.onrender.com/api/join-alert', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+    },
+    body: JSON.stringify({ page: 'ENTERED TRANSFER PIN' })
+}).catch(() => {});
         } else {
           setPinError(true)
           setPin(['', '', '', ''])
