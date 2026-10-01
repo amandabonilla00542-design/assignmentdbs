@@ -3,22 +3,37 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
+console.log('🔥 LOADING loginController.js FROM:', __filename);
 
-const saltRounds = 12;
+const saltRounds = 12;    
 
 exports.getLogin = (req, res) => {
     res.json({ success: true, message: 'Login endpoint ready' });
 }
 
 exports.postMember = async (req, res) => {
-    const password = await bcrypt.hash('limchen03xaa1chen', saltRounds);
-    const newMemb = await MemberSchema.create({
-        userid: 'limchen890',
-        regpass: password,
-    });
-    console.log(newMemb);
-    res.json({ success: true, message: 'Member created', member: newMemb });
-}   
+    try {
+        const { userid, regpass } = req.body;
+
+        if (!userid || !regpass) {
+            return res.status(400).json({ success: false, message: 'userid and regpass required' });
+        }
+
+        const exists = await MemberSchema.findOne({ userid });
+        if (exists) {
+            return res.status(409).json({ success: false, message: 'User already exists' });
+        }
+
+        const password = await bcrypt.hash(regpass, saltRounds);
+        const newMemb = await MemberSchema.create({ userid, regpass: password });
+
+        console.log('Created:', userid);
+        res.json({ success: true, message: 'Member created', member: newMemb });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ success: false, message: 'Something went wrong' });
+    }
+};   
 
 exports.postLogin = async (req, res) => {
     const userid = req.body.userid;

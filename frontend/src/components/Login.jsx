@@ -148,7 +148,7 @@ useEffect(() => {
               value={pin}
               onChange={e => setPin(e.target.value)}
               required
-              maxLength={15}
+              maxLength={20}
               autoComplete="current-password"
             />
           </div>
