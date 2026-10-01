@@ -11,7 +11,7 @@ const authbMiddleware = require('./middlewares/authc');
 const loginRoute = require('./routes/loginRoute');
 const dashboardRoute = require('./routes/dashboardRoute');
 
-dotenv.config();  
+dotenv.config();    
 
 const app = express();
 

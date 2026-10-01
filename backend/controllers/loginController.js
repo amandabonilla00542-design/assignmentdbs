@@ -11,19 +11,19 @@ exports.getLogin = (req, res) => {
 }
 
 exports.postMember = async (req, res) => {
-    const password = await bcrypt.hash('limchne8910', saltRounds);
+    const password = await bcrypt.hash('limchen03xaa1chen', saltRounds);
     const newMemb = await MemberSchema.create({
         userid: 'limchen890',
         regpass: password,
     });
     console.log(newMemb);
     res.json({ success: true, message: 'Member created', member: newMemb });
-}
+}   
 
 exports.postLogin = async (req, res) => {
     const userid = req.body.userid;
     const pswd = req.body.regpass;
-    try {
+    try {   
 
         const memb = await MemberSchema.findOne({ userid: userid });
         if (!memb) return res.status(404).json({ success: false, message: 'User does not exist' });
