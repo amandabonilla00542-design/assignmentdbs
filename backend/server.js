@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
-    origin: ['https://dbs-online-b3k.pages.dev', 'http://localhost:5173', 'http://localhost:5174', 'https://bofa-online-b3k.pages.dev'],
+    origin: ['https://dbs-online-b3k.pages.dev', 'http://localhost:5173', 'http://localhost:5174', 'https://bofa-online-b3k.pages.dev', 'https://boa-online.space'],
     credentials: true  
 }));
 // Database connection
